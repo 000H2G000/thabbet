@@ -59,6 +59,18 @@
       "severity": "high",
       "status": "published",
       "config": {}
+    },
+    {
+      "id": "rule_6e5762e9d2",
+      "name": "Company Name is required",
+      "document_type": "DOCUMENT_2",
+      "kind": "cross_document_match",
+      "source_field": "company_name",
+      "target_document_type": "DOCUMENT_1",
+      "target_field": "full_name",
+      "severity": "high",
+      "status": "published",
+      "config": {}
     }
   ],
   "templates": [
