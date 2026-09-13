@@ -1,0 +1,224 @@
+{
+  "rules": [
+    {
+      "id": "rule_7e5d849a75",
+      "name": "Full Name is required",
+      "document_type": "DOCUMENT_1",
+      "kind": "cross_document_match",
+      "source_field": "full_name",
+      "target_document_type": "DOCUMENT_2",
+      "target_field": "address",
+      "severity": "high",
+      "status": "published",
+      "config": {}
+    },
+    {
+      "id": "rule_rne_tax_rep",
+      "name": "Representative consistency",
+      "document_type": "RNE",
+      "kind": "cross_document_match",
+      "source_field": "legal_representative",
+      "target_document_type": "TAX_CARD",
+      "target_field": "legal_representative",
+      "severity": "critical",
+      "status": "published",
+      "config": {}
+    },
+    {
+      "id": "rule_rne_tax_company",
+      "name": "Company name consistency",
+      "document_type": "RNE",
+      "kind": "cross_document_match",
+      "source_field": "company_name",
+      "target_document_type": "TAX_CARD",
+      "target_field": "company_name",
+      "severity": "high",
+      "status": "published",
+      "config": {}
+    },
+    {
+      "id": "rule_rne_status",
+      "name": "RNE status is present",
+      "document_type": "RNE",
+      "kind": "required",
+      "source_field": "status",
+      "target_document_type": null,
+      "target_field": null,
+      "severity": "medium",
+      "status": "published",
+      "config": {}
+    },
+    {
+      "id": "rule_tax_id",
+      "name": "Tax identifier is present",
+      "document_type": "TAX_CARD",
+      "kind": "required",
+      "source_field": "matricule_fiscal",
+      "target_document_type": null,
+      "target_field": null,
+      "severity": "high",
+      "status": "published",
+      "config": {}
+    }
+  ],
+  "templates": [
+    {
+      "id": "template_3eb2479479",
+      "name": "aaaaaaa",
+      "description": "",
+      "document_types": [
+        "RNE",
+        "TAX_CARD",
+        "CIN"
+      ],
+      "rule_ids": [
+        "rule_rne_tax_rep",
+        "rule_rne_tax_company",
+        "rule_rne_status",
+        "rule_tax_id"
+      ],
+      "documents": [],
+      "status": "draft"
+    },
+    {
+      "id": "template_4032141b08",
+      "name": "bourse",
+      "description": "ezaeza",
+      "document_types": [
+        "DOCUMENT_1",
+        "DOCUMENT_2"
+      ],
+      "rule_ids": [
+        "rule_rne_tax_rep",
+        "rule_rne_tax_company",
+        "rule_rne_status",
+        "rule_tax_id"
+      ],
+      "documents": [],
+      "status": "draft"
+    },
+    {
+      "id": "template_2138dea100",
+      "name": "bourse",
+      "description": "",
+      "document_types": [
+        "DOCUMENT_1",
+        "DOCUMENT_2"
+      ],
+      "rule_ids": [
+        "rule_rne_tax_rep",
+        "rule_rne_tax_company",
+        "rule_rne_status",
+        "rule_tax_id",
+        "rule_7e5d849a75"
+      ],
+      "documents": [],
+      "status": "draft"
+    },
+    {
+      "id": "template_1ec786d125",
+      "name": "a",
+      "description": "",
+      "document_types": [
+        "DOCUMENT_1",
+        "DOCUMENT_2"
+      ],
+      "rule_ids": [
+        "rule_rne_tax_rep",
+        "rule_rne_tax_company",
+        "rule_rne_status",
+        "rule_tax_id",
+        "rule_7e5d849a75"
+      ],
+      "documents": [],
+      "status": "draft"
+    },
+    {
+      "id": "template_business_identity",
+      "name": "Business identity pack",
+      "description": "RNE, tax card, and identity checks",
+      "document_types": [
+        "RNE",
+        "TAX_CARD",
+        "CIN"
+      ],
+      "rule_ids": [
+        "rule_rne_tax_rep",
+        "rule_rne_tax_company",
+        "rule_rne_status",
+        "rule_tax_id"
+      ],
+      "documents": [],
+      "status": "published"
+    },
+    {
+      "id": "template_273829e36d",
+      "name": "aa",
+      "description": "a",
+      "document_types": [
+        "DOCUMENT_1"
+      ],
+      "rule_ids": [
+        "rule_7e5d849a75",
+        "rule_rne_tax_rep",
+        "rule_rne_tax_company",
+        "rule_rne_status",
+        "rule_tax_id"
+      ],
+      "documents": [
+        {
+          "name": "Document 1",
+          "code": "DOCUMENT_1",
+          "filename": "image (1).jpg"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "template_faa9579e4f",
+      "name": "a",
+      "description": "a",
+      "document_types": [
+        "DOCUMENT_1"
+      ],
+      "rule_ids": [
+        "rule_7e5d849a75",
+        "rule_rne_tax_rep",
+        "rule_rne_tax_company",
+        "rule_rne_status",
+        "rule_tax_id"
+      ],
+      "documents": [
+        {
+          "name": "Document 1",
+          "code": "DOCUMENT_1",
+          "filename": "image (2).jpg"
+        }
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "template_2d6caeddff",
+      "name": "aa",
+      "description": "aa",
+      "document_types": [
+        "DOCUMENT_1"
+      ],
+      "rule_ids": [
+        "rule_7e5d849a75",
+        "rule_rne_tax_rep",
+        "rule_rne_tax_company",
+        "rule_rne_status",
+        "rule_tax_id"
+      ],
+      "documents": [
+        {
+          "name": "Document 1",
+          "code": "DOCUMENT_1",
+          "filename": "image (1).jpg"
+        }
+      ],
+      "status": "draft"
+    }
+  ]
+}
