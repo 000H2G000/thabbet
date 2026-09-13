@@ -104,6 +104,8 @@ export default function Home() {
   >([]);
   const [customReviewType, setCustomReviewType] = useState("DOCUMENT_1");
   const [reviewResult, setReviewResult] = useState<{
+    template_id?: string;
+    template_name?: string;
     status: string;
     summary: { passed: number; failed: number; total: number };
     results: ValidationResult[];
