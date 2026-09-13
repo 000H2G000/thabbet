@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "thabbet-backend"
+version = "0.1.0"
+description = "THABBET Document Compliance Platform Backend API"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.34.0",
+    "pydantic>=2.11.0",
+    "python-multipart>=0.0.20",
+    "pillow>=11.0.0",
+    "pytesseract>=0.3.10",
+    "opencv-python-headless>=4.10.0"
+]
