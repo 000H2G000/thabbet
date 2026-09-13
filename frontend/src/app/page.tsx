@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8001";
+
 type ExtractedField = {
   id: string;
   label: string;
@@ -184,7 +186,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    void fetch("http://localhost:8001/api/v1/templates")
+    void fetch(`${API_BASE}/api/v1/templates`)
       .then((response) => {
         if (!response.ok) throw new Error("Templates could not be loaded");
         return response.json() as Promise<Template[]>;
@@ -200,7 +202,7 @@ export default function Home() {
 
   useEffect(() => {
     const query = ruleSearch ? `?search=${encodeURIComponent(ruleSearch)}` : "";
-    void fetch(`http://localhost:8001/api/v1/rules${query}`)
+    void fetch(`${API_BASE}/api/v1/rules${query}`)
       .then((response) => response.json())
       .then((loaded: Rule[]) =>
         setRules(
@@ -274,14 +276,14 @@ export default function Home() {
       form.append("file", file);
       form.append("document_type", documentType);
       const scanned = await fetch(
-        "http://localhost:8001/api/v1/documents/scan",
+        `${API_BASE}/api/v1/documents/scan`,
         { method: "POST", body: form },
       );
       const scannedBody = await scanned.json();
       if (!scanned.ok)
         throw new Error(scannedBody.detail || "Document upload failed");
       const result = await fetch(
-        `http://localhost:8001/api/v1/documents/${scannedBody.id}/ocr`,
+        `${API_BASE}/api/v1/documents/${scannedBody.id}/ocr`,
         { method: "POST", body: form },
       );
       const resultBody = await result.json();
@@ -351,7 +353,7 @@ export default function Home() {
       return setError(
         "Upload the target document and choose its matching field before publishing this rule.",
       );
-    const response = await fetch("http://localhost:8001/api/v1/rules", {
+    const response = await fetch(`${API_BASE}/api/v1/rules`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -379,7 +381,7 @@ export default function Home() {
 
   async function testConstraint() {
     const response = await fetch(
-      "http://localhost:8001/api/v1/rules/test-constraint",
+      `${API_BASE}/api/v1/rules/test-constraint`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -400,7 +402,7 @@ export default function Home() {
       return setError("Add at least one document to this template.");
     let response: Response;
     try {
-      response = await fetch(`http://localhost:8001/api/v1/templates${editingTemplateId ? `/${editingTemplateId}` : ""}`, {
+      response = await fetch(`${API_BASE}/api/v1/templates${editingTemplateId ? `/${editingTemplateId}` : ""}`, {
       method: editingTemplateId ? "PATCH" : "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -472,7 +474,7 @@ export default function Home() {
     });
     try {
       const response = await fetch(
-        "http://localhost:8001/api/v1/review-queue",
+        `${API_BASE}/api/v1/review-queue`,
         { method: "POST", body: form },
       );
       const body = await response.json();
@@ -497,7 +499,7 @@ export default function Home() {
     );
     if (!targetField)
       return setError("Choose a target field before testing the rule.");
-    const response = await fetch("http://localhost:8001/api/v1/rules/test", {
+    const response = await fetch(`${API_BASE}/api/v1/rules/test`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
